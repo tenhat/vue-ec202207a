@@ -1,24 +1,7 @@
-# vue-router-ec202207
+## 架空のECサイト(Vue3系でのリプレイス)
 
-## Project setup
-```
-yarn install
-```
+1. 商品一覧画面
+![screenshot](/public/vue_ec_screenshot.png)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+2. 詳細画面
+![details](/public/vue_details_screenshot.png)
