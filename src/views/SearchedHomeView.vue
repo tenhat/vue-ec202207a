@@ -1,16 +1,13 @@
 <template>
   <HeaderComponent />
-  <div class="mt-8 p-8 w-full sm:w-2/3 mx-auto">
+  <div class="mt-8 p-8 w-2/3 mx-auto">
     <h2 class="font-bold text-xl mb-4">商品を検索する</h2>
-    <div class="flex flex-col sm:flex-row items-center justify-center">
-      <div class="relative w-full md:w-2/3">
-        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-          <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        </div>
-        <input v-model="searchValue" type="search" id="search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required>
-        <button @click="searchItem" type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-curry hover:bg-curryHover focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+    <div class="relative">
+      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
       </div>
-      <button @click="searchClear" class="text-xs mt-4 sm:mt-0 sm:ml-4 bg-gray-200 h-8 w-16 text-gray-500 rounded-lg">Clear</button>
+      <input v-model="searchValue" type="search" id="search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required>
+      <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-curry hover:bg-curryHover focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
     </div>
   </div>
   <div class="w-4/5 mx-auto grid gap-8 grid-cols-2 md:grid-cols-3 mt-8 justify-items-center">
@@ -37,14 +34,14 @@
   const itemsUrl = "http://localhost:8000/items";
   
   export default {
-    name: "HomeView",
+    name: "SearchedHomeView",
     components: {
     HeaderComponent,
 },
     data() {
       return {
         searchValue: "",
-        curryItems: [],
+        curryItems: "",
       };
     },
     async created() {
@@ -63,19 +60,6 @@
             imagePath: imagePath,
           }
         });
-      },
-      async searchItem() {
-        const searchedItem = this.curryItems
-          .filter(curryItem => {
-            return curryItem.name.indexOf(this.searchValue) >= 0;
-          });
-        this.curryItems = searchedItem;
-      },
-      async searchClear() {
-        console.log('aaa')
-        const response = await fetch(itemsUrl).then((res) => res.json());
-        this.curryItems = response;
-        this.searchValue = '';
       }
     }
   };

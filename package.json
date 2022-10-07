@@ -5,11 +5,18 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "mock-api": "json-server --watch data/db.json --port 8000"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/vue-fontawesome": "^3.0.1",
     "autoprefixer": "^10.4.12",
     "core-js": "^3.8.3",
+    "json-server": "^0.17.0",
     "postcss": "^8.4.17",
     "tailwindcss": "^3.1.8",
     "vue": "^3.2.13",
